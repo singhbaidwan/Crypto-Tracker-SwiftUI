@@ -16,8 +16,12 @@ struct HomeView: View {
                 .ignoresSafeArea(.all)
             VStack{
                 homeHeader
+                HomeStatasView(showPortfolio: $showPortfolio)
+                
                 SearchBarView(searchText: $vm.searchText)
+                
                 listHeaderView
+                
                 if !showPortfolio{
                     addListToView(data: vm.allCoins, show: false)
                         .transition(.move(edge: .leading))
