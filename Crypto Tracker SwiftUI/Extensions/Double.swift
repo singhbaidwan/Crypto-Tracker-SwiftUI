@@ -12,7 +12,7 @@ extension Double{
     /// ```
     /// converts 1234.56 to 1,234.56
     /// ```
-    private var currencyFormatter:NumberFormatter{
+    private var currencyFormatter6:NumberFormatter{
         let formatter = NumberFormatter()
         formatter.usesGroupingSeparator = true
         formatter.numberStyle = .currency
@@ -22,14 +22,27 @@ extension Double{
         return formatter
     }
     
+    private var currencyFormatter2:NumberFormatter{
+        let formatter = NumberFormatter()
+        formatter.usesGroupingSeparator = true
+        formatter.numberStyle = .currency
+//        formatter.locale = .current
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }
     
+    func asCurrencyWith2Decimals()->String{
+        let nsNumber = NSNumber(value: self)
+        return currencyFormatter2.string(from: nsNumber) ?? "0.00"
+    }
     /// Converts  a double value of currency as a string to 2-6 decimal places
     /// ```
     /// converts 1234.56 to "1,234.56"
     /// ```
     func asCurrencyWith6Decimals()->String{
         let nsNumber = NSNumber(value: self)
-        return currencyFormatter.string(from: nsNumber) ?? "0.00"
+        return currencyFormatter6.string(from: nsNumber) ?? "0.00"
     }
     
     /// Converts  a double value to string with two decimal places
