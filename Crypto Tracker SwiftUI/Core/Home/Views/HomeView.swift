@@ -65,7 +65,7 @@ extension HomeView{
                 .background(
                     CircleButtonAnimationView(animate: $showPortfolio)
                 )
-                
+            
             Spacer()
             Text(showPortfolio ? "Portfolio" :"Live Prices")
                 .font(.footnote)
@@ -100,13 +100,46 @@ extension HomeView{
     
     var listHeaderView:some View{
         HStack{
-            Text("Coin")
-            Spacer()
-            if showPortfolio {
-                Text("Holdings")
+            HStack(spacing: 4) {
+                Text("Coin")
+                Image(systemName: "chevron.down")
+                    .opacity( (vm.sortOption == .rank || vm.sortOption == .rankReversed) ? 1 : 0)
+                    .rotationEffect(.init(degrees: (vm.sortOption == .rank ? 0 : 180)))
+            }
+            .onTapGesture {
+                withAnimation(.default)
+                {
+                    vm.sortOption = vm.sortOption == .rank ? .rankReversed : .rank
+                }
             }
             Spacer()
-            Text("Price")
+            if showPortfolio {
+                HStack(spacing: 4) {
+                    Text("Holdings")
+                    Image(systemName: "chevron.down")
+                        .opacity( (vm.sortOption == .holding || vm.sortOption == .holdingReversed) ? 1 : 0)
+                        .rotationEffect(.init(degrees: (vm.sortOption == .holding ? 0 : 180)))
+                }
+                .onTapGesture {
+                    withAnimation(.default)
+                    {
+                        vm.sortOption = vm.sortOption == .holding ? .holdingReversed : .holding
+                    }
+                }
+            }
+            Spacer()
+            HStack(spacing:4){
+                Text("Price")
+                Image(systemName: "chevron.down")
+                    .opacity( (vm.sortOption == .price || vm.sortOption == .priceReversed) ? 1 : 0)
+                    .rotationEffect(.init(degrees: (vm.sortOption == .price ? 0 : 180)))
+            }
+            .onTapGesture {
+                withAnimation(.default)
+                {
+                    vm.sortOption = vm.sortOption == .price ? .priceReversed : .price
+                }
+            }
             Button {
                 withAnimation(.linear(duration: 2))
                 {
@@ -116,7 +149,7 @@ extension HomeView{
                 Image(systemName: "goforward")
             }
             .rotationEffect(.init(degrees: vm.isLoading ? 360 : 0))
-
+            
         }
         .font(.caption)
         .foregroundColor(Color.theme.secondaryText)

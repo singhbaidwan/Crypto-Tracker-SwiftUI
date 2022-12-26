@@ -14,12 +14,16 @@ class HomeViewModel:ObservableObject{
     @Published var searchText:String = ""
     @Published var statistics:[StatisticModel] = []
     @Published var isLoading:Bool = false
-    
+    @Published var sortOption:SortOption = .holding
     
     private let coinDataService = CoinDataService()
     private var cancellables = Set<AnyCancellable>()
     private let marketDataService = MarketDataService()
     private let portfolioDataService = PortfolioDataService()
+    
+    enum SortOption{
+        case rank,rankReversed,holding,holdingReversed,price,priceReversed
+    }
     
     init(){
         addSubscribers()
@@ -33,18 +37,9 @@ class HomeViewModel:ObservableObject{
         //            .store(in: &cancellables)
         // this function handles the query as well as updates all the coins
         $searchText
-            .combineLatest(coinDataService.$allCoins)
+            .combineLatest(coinDataService.$allCoins,$sortOption)
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
-            .map { (text,startingCoins)->[CoinModel] in
-                guard !text.isEmpty else{
-                    return startingCoins
-                }
-                let lowerCasedText = text.lowercased()
-                return  startingCoins.filter { (coin) in
-                    return coin.name.lowercased().contains(lowerCasedText) || coin.symbol.lowercased().contains(lowerCasedText) ||
-                    coin.id.lowercased().contains(lowerCasedText)
-                }
-            }
+            .map (filterAndSortCoins)
             .sink { [weak self] returnedCoins in
                 self?.allCoins = returnedCoins
             }
@@ -65,8 +60,8 @@ class HomeViewModel:ObservableObject{
                     }
             }
             .sink { [weak self] returnedValue in
-                
-                self?.portfolioCoins =  returnedValue
+                guard let self = self else{return}
+                self.portfolioCoins = self.sortPortfolioCoinsIfNeeded(coins: returnedValue)
             }
             .store(in: &cancellables)
         
@@ -114,6 +109,55 @@ class HomeViewModel:ObservableObject{
         
         
     }
+    
+    private func filterAndSortCoins(text:String,coins:[CoinModel],sort:SortOption)->[CoinModel]{
+        var updatedCoins = filterCoins(text: text, startingCoins: coins)
+        sortCoins(sort: sort, coins: &updatedCoins)
+        return updatedCoins
+    }
+    private func filterCoins(text:String,startingCoins:[CoinModel])->[CoinModel]
+    {
+        guard !text.isEmpty else{
+            return startingCoins
+        }
+        let lowerCasedText = text.lowercased()
+        return  startingCoins.filter { (coin) in
+            return coin.name.lowercased().contains(lowerCasedText) || coin.symbol.lowercased().contains(lowerCasedText) ||
+            coin.id.lowercased().contains(lowerCasedText)
+        }
+    }
+    
+    private func sortCoins(sort:SortOption,coins:inout [CoinModel]){
+        switch sort{
+            
+        case .rank,.holding:
+             coins.sort(by: {$0.rank<$1.rank})
+//            return coins.sorted { coin1, coin2 in
+//                return coin1.rank<coin2.rank
+//            }
+        case .rankReversed,.holdingReversed:
+             coins.sort(by: {$0.rank>$1.rank})
+        case .price:
+             coins.sort(by: {$0.currentPrice > $1.currentPrice})
+        case .priceReversed:
+             coins.sort(by: { $0.currentPrice < $1.currentPrice})
+        }
+         
+    }
+    
+    private func sortPortfolioCoinsIfNeeded(coins:[CoinModel])->[CoinModel]{
+        // will only sort by holdings or reversed holdings if needed
+        switch sortOption{
+        case .holding:
+            return coins.sorted(by: {$0.currentHoldingsValue>$1.currentHoldingsValue})
+        case .holdingReversed:
+            return coins.sorted(by: {$0.currentHoldingsValue<$1.currentHoldingsValue})
+        default:
+            return coins
+        }
+        return coins
+    }
+    
     
     func reloadData(){
         isLoading = true
