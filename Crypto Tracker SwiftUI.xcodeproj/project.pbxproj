@@ -16,6 +16,7 @@
 		0B10C4422959F54B0095748A /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B10C4412959F54B0095748A /* HapticManager.swift */; };
 		0B10C448295A0AA50095748A /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B10C447295A0AA50095748A /* DetailView.swift */; };
 		0B21EF56295C897800844A38 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B21EF55295C897800844A38 /* Date.swift */; };
+		0B21EF58295C968C00844A38 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B21EF57295C968C00844A38 /* String.swift */; };
 		0B3DFFD92954A4AE005FD924 /* CircleButtonAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3DFFD82954A4AE005FD924 /* CircleButtonAnimationView.swift */; };
 		0B783CDA29570F990010121E /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B783CD929570F990010121E /* LocalFileManager.swift */; };
 		0B783CDC2957237E0010121E /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B783CDB2957237E0010121E /* SearchBarView.swift */; };
@@ -56,6 +57,7 @@
 		0B10C4412959F54B0095748A /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		0B10C447295A0AA50095748A /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		0B21EF55295C897800844A38 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		0B21EF57295C968C00844A38 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		0B3DFFD82954A4AE005FD924 /* CircleButtonAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonAnimationView.swift; sourceTree = "<group>"; };
 		0B783CD929570F990010121E /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		0B783CDB2957237E0010121E /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				0B7880442954BDCD0048E554 /* Double.swift */,
 				0B783CDD2957282B0010121E /* UIApplication.swift */,
 				0B21EF55295C897800844A38 /* Date.swift */,
+				0B21EF57295C968C00844A38 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				0BDE832A29546FB8009A5C34 /* Crypto_Tracker_SwiftUIApp.swift in Sources */,
 				0BEC6BCA295B5C2E00319B19 /* ChartView.swift in Sources */,
 				0B10C4422959F54B0095748A /* HapticManager.swift in Sources */,
+				0B21EF58295C968C00844A38 /* String.swift in Sources */,
 				0BE2467C295875F100B5CE90 /* XMarkButton.swift in Sources */,
 				0BEC6BC8295B3C4400319B19 /* CoinDetailDataService.swift in Sources */,
 				0BABB7C829560BE100074DBB /* CoinImageService.swift in Sources */,
