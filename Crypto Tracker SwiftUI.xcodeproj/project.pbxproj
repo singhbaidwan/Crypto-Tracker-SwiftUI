@@ -17,7 +17,10 @@
 		0B10C448295A0AA50095748A /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B10C447295A0AA50095748A /* DetailView.swift */; };
 		0B21EF56295C897800844A38 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B21EF55295C897800844A38 /* Date.swift */; };
 		0B21EF58295C968C00844A38 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B21EF57295C968C00844A38 /* String.swift */; };
+		0B21EF5C295CA12D00844A38 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B21EF5B295CA12D00844A38 /* SettingsView.swift */; };
 		0B3DFFD92954A4AE005FD924 /* CircleButtonAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3DFFD82954A4AE005FD924 /* CircleButtonAnimationView.swift */; };
+		0B50F5F1295CAC2100431050 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B50F5F0295CAC2100431050 /* LaunchScreen.storyboard */; };
+		0B50F5F3295CAE9900431050 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B50F5F2295CAE9900431050 /* LaunchView.swift */; };
 		0B783CDA29570F990010121E /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B783CD929570F990010121E /* LocalFileManager.swift */; };
 		0B783CDC2957237E0010121E /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B783CDB2957237E0010121E /* SearchBarView.swift */; };
 		0B783CDE2957282B0010121E /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B783CDD2957282B0010121E /* UIApplication.swift */; };
@@ -58,7 +61,10 @@
 		0B10C447295A0AA50095748A /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		0B21EF55295C897800844A38 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		0B21EF57295C968C00844A38 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		0B21EF5B295CA12D00844A38 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0B3DFFD82954A4AE005FD924 /* CircleButtonAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonAnimationView.swift; sourceTree = "<group>"; };
+		0B50F5F0295CAC2100431050 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0B50F5F2295CAE9900431050 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		0B783CD929570F990010121E /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		0B783CDB2957237E0010121E /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		0B783CDD2957282B0010121E /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -136,6 +142,39 @@
 				0BEC6BC5295B3C0700319B19 /* DetailViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0B21EF59295CA0E300844A38 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0B21EF5A295CA11000844A38 /* Views */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		0B21EF5A295CA11000844A38 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0B21EF5B295CA12D00844A38 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0B50F5EE295CABB700431050 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				0B50F5EF295CABCE00431050 /* Views */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		0B50F5EF295CABCE00431050 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0B50F5F0295CAC2100431050 /* LaunchScreen.storyboard */,
+				0B50F5F2295CAE9900431050 /* LaunchView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		0B7A01D52955BE83000C100B /* Services */ = {
@@ -226,8 +265,10 @@
 		0BDE833A2954722E009A5C34 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0B50F5EE295CABB700431050 /* Launch */,
 				0BDE833B29547242009A5C34 /* Home */,
 				0B10C443295A0A2D0095748A /* Details */,
+				0B21EF59295CA0E300844A38 /* Settings */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -339,6 +380,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B50F5F1295CAC2100431050 /* LaunchScreen.storyboard in Resources */,
 				0BDE833129546FBA009A5C34 /* Preview Assets.xcassets in Resources */,
 				0BDE832E29546FBA009A5C34 /* Assets.xcassets in Resources */,
 			);
@@ -357,6 +399,8 @@
 				0B783CE029574C3D0010121E /* StatisticModel.swift in Sources */,
 				0B783CE229574EC70010121E /* StatisticView.swift in Sources */,
 				0B0EFD6329589FB700800878 /* PortfolioContainer.xcdatamodeld in Sources */,
+				0B21EF5C295CA12D00844A38 /* SettingsView.swift in Sources */,
+				0B50F5F3295CAE9900431050 /* LaunchView.swift in Sources */,
 				0B783CDE2957282B0010121E /* UIApplication.swift in Sources */,
 				0BABB7CA295613A600074DBB /* CoinImageViewModel.swift in Sources */,
 				0BEC6BC4295B362E00319B19 /* CoinDetailModel.swift in Sources */,
@@ -520,7 +564,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Crypto Tracker";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -548,7 +592,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Crypto Tracker";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
