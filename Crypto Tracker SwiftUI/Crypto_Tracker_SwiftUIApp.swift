@@ -26,6 +26,7 @@ struct Crypto_Tracker_SwiftUIApp: App {
                     HomeView()
                         .navigationBarHidden(true)
                 }
+                .navigationViewStyle(StackNavigationViewStyle())
                 .environmentObject(homeViewModel)
                 ZStack{
                     if showLaunchView {

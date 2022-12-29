@@ -37,6 +37,11 @@ struct HomeView: View {
                 }
                 else
                 {
+                    ZStack(alignment: .top){
+                        if vm.portfolioCoins.isEmpty && vm.searchText.isEmpty{
+                         portFolioEmpty
+                        }
+                    }
                     addListToView(data: vm.portfolioCoins, show: true)
                         .transition(.move(edge: .trailing))
                 }
@@ -102,7 +107,15 @@ extension HomeView{
         .padding(.horizontal)
     }
     
-    
+    private var portFolioEmpty:some View{
+        
+            Text("You havnt added any coins to your portfolio yet. Click the + button to get Started !")
+                .font(.callout)
+                .foregroundColor(Color.theme.accent)
+                .fontWeight(.medium)
+                .multilineTextAlignment(.center)
+                .padding(50)
+    }
     @ViewBuilder
     func addListToView(data:[CoinModel],show:Bool) -> some View{
         List{
